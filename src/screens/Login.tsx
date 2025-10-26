@@ -35,13 +35,18 @@ const Login: React.FC<Props> = ({ navigation }) => {
     try{
         
         await dispatch(login(values)).unwrap();
+        Toast.show({
+            type: 'success',
+            text1: 'Success',
+            text2: "Signed in successfully",
+        });
     }
     catch(err: any){
-      Toast.show({
-        type: 'error',
-        text1: 'Error',
-        text2: err || "Something went wrong",
-      });
+        Toast.show({
+            type: 'error',
+            text1: 'Error',
+            text2: err || "Something went wrong",
+        });
     }
   }
 

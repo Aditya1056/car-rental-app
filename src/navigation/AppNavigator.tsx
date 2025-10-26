@@ -16,7 +16,7 @@ const AppNavigator = () => {
 
     useEffect(() => {
         dispatch(fetchUser());
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <NavigationContainer>
