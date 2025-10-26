@@ -1,14 +1,18 @@
 import { ColorSchemeName, Image, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { useNavigation } from '@react-navigation/native';
-// import { useAppSelector } from '../store';
+import { useAppSelector } from '../store';
 import React from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import CustomButton from '../components/CustomButton';
 
-const OnBoarding: React.FC = () => {
+type Props = NativeStackScreenProps<any>;
 
-    // const { loading, loggedIn } = useAppSelector(state => state.auth);
+
+const OnBoarding: React.FC<Props> = ({ navigation }) => {
+
+    const { loading } = useAppSelector(state => state.auth);
 
     const theme =  useColorScheme();
 
@@ -32,19 +36,21 @@ const OnBoarding: React.FC = () => {
                             resizeMode='contain' 
                         />
                         <Text style={[styles.headerTextStyles]} >
-                            CarRentals
+                            Avis
                         </Text>
 
                     </View>
 
                     <Text style={styles.subTextStyles} >
-                        Find, book, and drive your perfect car — anytime, anywhere.
+                        Avis India introduces a premium bespoke car rental 
+                        service exclusively for Airport Transfers. 
                     </Text>
 
                     <CustomButton 
-                        title="Explore" 
+                        title="Explore Avis" 
                         containerStyles={{width: '90%', marginTop: 20}}
-                        isLoading={false} 
+                        isLoading={loading} 
+                        handlePress={() => navigation.navigate('Login')} 
                     />
                 </View>
             </ScrollView>
@@ -54,8 +60,6 @@ const OnBoarding: React.FC = () => {
 
 const getStyles = (theme: ColorSchemeName) => {
     const styleSheet = StyleSheet.create({
-        container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-        text: { fontSize: 18, fontWeight: '600' }, 
         safeAreaStyles: {
             height: '100%',
             backgroundColor: theme === 'dark' ? '#1E1E1E' : 'white',
@@ -68,7 +72,7 @@ const getStyles = (theme: ColorSchemeName) => {
             alignItems: 'center',
             minHeight: '100%',
             width: '100%',
-            paddingHorizontal: 8,
+            paddingHorizontal: 10,
             rowGap: 10,
         },
         carImageStyles: {
@@ -89,8 +93,8 @@ const getStyles = (theme: ColorSchemeName) => {
         headerTextStyles: {
             fontWeight: 'bold',
             textAlign: 'center',
-            color: theme === 'dark' ? 'white' : 'black',
-            fontSize: 25,
+            color: '#DE483A',
+            fontSize: 30,
         },
         subTextStyles: {
             fontSize: 15,

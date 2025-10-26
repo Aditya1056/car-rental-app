@@ -8,16 +8,13 @@ import { Provider } from 'react-redux';
 import Toast from 'react-native-toast-message';
 
 import store from './src/store';
-import OnBoarding from './src/screens/OnBoarding';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import AppNavigator from './src/navigation/AppNavigator';
 
 function App() {
 
   return (
     <Provider store={store} >
-      <SafeAreaView>
-        <OnBoarding />
-      </SafeAreaView>
+      <AppNavigator />
       <Toast />
     </Provider>
   );

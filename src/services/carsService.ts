@@ -30,6 +30,10 @@ mock.onGet('/car').reply(async (config) => {
             return carData.id.toString() === id?.toString();
         });
 
+        if(!car){
+            return [404, { success: false, message: 'Car not found!' }];
+        }
+
         return [200, { success: true, data: car }];
     }
     catch(err){

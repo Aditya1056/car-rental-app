@@ -16,7 +16,7 @@ mock.onPost('/login').reply(async (config) => {
         const { email } = JSON.parse(config.data);
 
         if(data.email !== email){
-            return [404, { success: false, data: undefined }];
+            return [404, { success: false, message: 'User does not exist!' }];
         }
 
         const userData = {
@@ -40,11 +40,11 @@ mock.onPost('/signup').reply(async (config) => {
         const { email, name } = JSON.parse(config.data);
 
         if(data.email === email){
-            return [409, { success: false, data: undefined }];
+            return [409, { success: false, message: 'Email is already registered'}];
         }
 
         const userData = {
-            id: Date.now().toLocaleString(),
+            id: Date.now().toString(),
             name,
             email,
             expiryAt: Date.now() + (10 * 60 * 1000),
@@ -67,7 +67,7 @@ mock.onGet('/user').reply(async () => {
 
 
         if(!userExists){
-            return [404, { success: false, data: undefined }];
+            return [404, { success: false, message: 'User not found!' }];
         }
 
         const userData = JSON.parse(userExists);

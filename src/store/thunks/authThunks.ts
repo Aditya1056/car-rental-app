@@ -27,28 +27,26 @@ export const login = createAsyncThunk('users/login',
 
             return response.data.data;
         }
-        catch(err: any){
-            return thunkAPI.rejectWithValue(err.message || 'Something went wrong!');
+        catch(err: any) {
+            return thunkAPI.rejectWithValue(err.message || 'Invalid Credentials');
         }
     }
 );
 
 export const signUp = createAsyncThunk('users/signUp', 
-    async (data: {email: string, name: string}, thunkAPI) => {
+    async (data: {email: string, fullname: string}, thunkAPI) => {
 
         try{
 
-            await authInstance.post('/signup', data);
-
-            const response = await authInstance.post('/login', {
+            const response = await authInstance.post('/signup', {
                 email: data.email,
-                name: data.name
+                name: data.fullname,
             });
 
             return response.data.data;
         }
         catch(err: any){
-            return thunkAPI.rejectWithValue(err.message || 'Something went wrong!');
+            return thunkAPI.rejectWithValue(err?.message || 'Something went wrong!');
         }
     }
 );
@@ -60,7 +58,7 @@ export const logout = createAsyncThunk('users/logout',
             await authInstance.post('/logout');
         }
         catch(err: any){
-            return thunkAPI.rejectWithValue(err.message || 'Something went wrong!');
+            return thunkAPI.rejectWithValue(err?.message || 'Something went wrong!');
         }
     }
 );
