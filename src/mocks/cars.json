@@ -5,18 +5,54 @@
     "model": "Corolla",
     "year": 2022,
     "pricePerDay": 50,
-    "images": ["https://via.placeholder.com/300x150"],
+    "images": [
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545070/corolla-2_xscna3.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761544940/corolla-1_ko6bxq.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545086/corolla-3_ojizfy.png"
+    ],
     "seats": 5,
     "transmission": "Automatic"
   },
   {
     "id": 2,
-    "make": "Honda",
-    "model": "Civic",
-    "year": 2021,
-    "pricePerDay": 55,
-    "images": ["https://via.placeholder.com/300x150"],
+    "make": "Ferrari",
+    "model": "Ferrari Four (FF)",
+    "year": 2025,
+    "pricePerDay": 85,
+    "images": [
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545119/ff-1_w2mkxa.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545125/ff-2_ojrqqy.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545131/ff-3_kmzkwj.png"
+    ],
+    "seats": 4,
+    "transmission": "Manual"
+  },
+  {
+    "id": 3,
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "pricePerDay": 50,
+    "images": [
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761544940/corolla-1_ko6bxq.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545070/corolla-2_xscna3.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545086/corolla-3_ojizfy.png"
+    ],
     "seats": 5,
+    "transmission": "Automatic"
+  },
+  {
+    "id": 4,
+    "make": "Ferrari",
+    "model": "Ferrari Four (FF)",
+    "year": 2025,
+    "pricePerDay": 85,
+    "images": [
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545125/ff-2_ojrqqy.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545119/ff-1_w2mkxa.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545131/ff-3_kmzkwj.png"
+    ],
+    "seats": 4,
     "transmission": "Manual"
   }
 ]
