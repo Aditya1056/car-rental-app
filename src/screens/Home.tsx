@@ -31,6 +31,10 @@ const Home: React.FC<PropsWithChildren> = () => {
 
             try{
                 await dispatch(logout());
+                Toast.show({
+                    type: 'info',
+                    text1: 'Logged Out!',
+                });
             }
             catch(err: any){
                 Toast.show({

@@ -1,18 +1,12 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ColorSchemeName, useColorScheme, TouchableOpacity } from 'react-native';
 import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList, car } from '../util/types';
 
 type Props = {
-    car: {
-        id: number,
-        make: string,
-        model: string,
-        images: string[],
-        year: number,
-        pricePerDay: number,
-        seats: number,
-        transmission: string,
-    },
+    car: car
 }
 
 const CarCard: React.FC<Props> = ({ car } ) => {
@@ -21,58 +15,66 @@ const CarCard: React.FC<Props> = ({ car } ) => {
 
     const styles = getStyles(theme);
 
-  return (
-    <TouchableOpacity>
-        <View style={styles.viewStyles} >
-            <Image 
-                source={{uri: car.images[0]}} 
-                resizeMode='cover' 
-                style={styles.imageStyles}
-            />
-            <Text style={styles.titleStyles} >
-                {car.model} - {car.make}
-            </Text>
-            <View style={styles.infoStyles} >
-                <View style={styles.specStyles} >
-                    <FontAwesome6 
-                        name='user-group' 
-                        size={14} 
-                        color={theme === 'dark' ? 'white' : 'black'} 
-                        iconStyle='solid'
-                        style={{opacity: 0.7}}
-                    />
-                    <Text style={styles.specTextStyles} >
-                        {car.seats} seats
-                    </Text>
-                </View>
-                <View style={styles.specStyles} >
-                    <FontAwesome6 
-                        name='gears' 
-                        size={16} 
-                        color={theme === 'dark' ? 'white' : 'black'} 
-                        iconStyle='solid'
-                        style={{opacity: 0.7}}
-                    />
-                    <Text style={styles.specTextStyles} >
-                        {car.transmission}
-                    </Text>
-                </View>
-                <View style={styles.specStyles} >
-                    <FontAwesome6 
-                        name='circle-dollar-to-slot' 
-                        size={16} 
-                        color={theme === 'dark' ? 'white' : 'black'} 
-                        iconStyle='solid'
-                        style={{opacity: 0.7}}
-                    />
-                    <Text style={styles.specTextStyles} >
-                        {car.pricePerDay} per day
-                    </Text>
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+    const carDetailsNavigateHandler = () => {
+        navigation.navigate('CarDetails', { id: car.id.toString() })
+    }
+
+    return (
+        <TouchableOpacity 
+            onPress={carDetailsNavigateHandler} 
+        >
+            <View style={styles.viewStyles} >
+                <Image 
+                    source={{uri: car.images[0]}} 
+                    resizeMode='cover' 
+                    style={styles.imageStyles}
+                />
+                <Text style={styles.titleStyles} >
+                    {car.model} - {car.make}
+                </Text>
+                <View style={styles.infoStyles} >
+                    <View style={styles.specStyles} >
+                        <FontAwesome6 
+                            name='user-group' 
+                            size={14} 
+                            color={theme === 'dark' ? 'white' : 'black'} 
+                            iconStyle='solid'
+                            style={{opacity: 0.7}}
+                        />
+                        <Text style={styles.specTextStyles} >
+                            {car.seats} seats
+                        </Text>
+                    </View>
+                    <View style={styles.specStyles} >
+                        <FontAwesome6 
+                            name='gears' 
+                            size={16} 
+                            color={theme === 'dark' ? 'white' : 'black'} 
+                            iconStyle='solid'
+                            style={{opacity: 0.7}}
+                        />
+                        <Text style={styles.specTextStyles} >
+                            {car.transmission}
+                        </Text>
+                    </View>
+                    <View style={styles.specStyles} >
+                        <FontAwesome6 
+                            name='circle-dollar-to-slot' 
+                            size={16} 
+                            color={theme === 'dark' ? 'white' : 'black'} 
+                            iconStyle='solid'
+                            style={{opacity: 0.7}}
+                        />
+                        <Text style={styles.specTextStyles} >
+                            {car.pricePerDay} per day
+                        </Text>
+                    </View>
                 </View>
             </View>
-        </View>
-    </TouchableOpacity>
-  );
+        </TouchableOpacity>
+    );
 }
 
 const getStyles = (theme: ColorSchemeName) => {
