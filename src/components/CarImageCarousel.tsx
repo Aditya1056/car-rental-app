@@ -8,7 +8,7 @@ import Loader from './Loader';
 const { width: screenWidth } = Dimensions.get('window');
 
 type Props = {
-  images: string[];
+    images: string[];
 }
 
 type carouselItemType = {
@@ -134,7 +134,7 @@ const getStyles = () => {
         },
     });
 
-return styles;
+    return styles;
 }
 
 
