@@ -19,7 +19,7 @@ const FormField : React.FC<Props> = ({
 
     const [field, meta, helpers] = useField(name);
 
-    const [showToken, setShowToken] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
     const theme = useColorScheme();
@@ -27,7 +27,7 @@ const FormField : React.FC<Props> = ({
     const styles = getStyles(theme, isFocused);
 
     const toggleShowPassword = () => {
-        setShowToken((prev) => !prev);
+        setShowPassword((prev) => !prev);
     }
 
   return (
@@ -42,27 +42,27 @@ const FormField : React.FC<Props> = ({
 
         <View
             style={[styles.innerViewStyles]} 
-            onFocus={() => setIsFocused(false)} 
+            onFocus={() => setIsFocused(true)} 
             onBlur={() => setIsFocused(false)} 
         >
             <TextInput 
-                style={[styles.innerViewStyles]} 
+                style={[styles.textInputStyles]} 
                 value={field.value} 
                 placeholder={placeholder} 
                 placeholderTextColor='#7b7b8b' 
                 onChangeText={helpers.setValue} 
                 onBlur={() => helpers.setTouched(true)} 
-                secureTextEntry={title === 'Token' && !showToken} 
+                secureTextEntry={title === 'Password' && !showPassword} 
             />
             {
-                title === 'Token' && 
+                title === 'Password' && 
                 <TouchableOpacity onPress={toggleShowPassword} >
                     {
-                        !showToken && 
+                        !showPassword && 
                         <FontAwesome6 name='eye' size={24} color={theme === 'dark' ? 'white' : 'black'} />
                     }
                     {
-                        showToken && 
+                        showPassword && 
                         <FontAwesome6 name='eye-slash' size={24} color={theme === 'dark' ? 'white' : 'black'} />
                     }
                 </TouchableOpacity>
@@ -80,7 +80,7 @@ const getStyles = (theme: ColorSchemeName, isFocused: boolean) => {
 
     const styleSheet = StyleSheet.create({
         viewStyles: {
-            rowGap: 2,
+            rowGap: 10,
         },
         textStyles: {
             fontWeight: 'medium',
@@ -89,8 +89,8 @@ const getStyles = (theme: ColorSchemeName, isFocused: boolean) => {
         innerViewStyles: {
             width: '100%',
             flexDirection: 'row',
-            height: 16,
-            paddingHorizontal: 4,
+            height: 60,
+            paddingHorizontal: 20,
             borderWidth: 2,
             borderRadius: 10,
             alignItems: 'center',
@@ -100,13 +100,13 @@ const getStyles = (theme: ColorSchemeName, isFocused: boolean) => {
         textInputStyles: {
             flex: 1,
             fontWeight: 'semibold',
-            color: theme === 'dark' ? 'white ' : 'black',
+            color: theme === 'dark' ? 'white' : 'black',
         },
         errorStyles: {
             width:'90%',
             margin: 'auto',
             textAlign:'center',
-            color: 'red'
+            color: '#e05555'
         }
     });
 

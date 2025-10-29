@@ -4,7 +4,7 @@ import { Text, TouchableOpacity } from 'react-native';
 
 type Props = {
     title: string,
-    handlePress?: () => void,
+    handlePress?: (values?: any) => void | Promise<void>,
     containerStyles?: object,
     textStyles?: object,
     isLoading: boolean,
