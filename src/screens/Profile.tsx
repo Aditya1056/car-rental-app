@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
-const Profile = () => {
+const Profile: React.FC<PropsWithChildren> = () => {
   return (
     <View>
       <Text>Profile</Text>

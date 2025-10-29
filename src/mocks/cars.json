@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "pricePerDay": 50,
+    "images": ["https://via.placeholder.com/300x150"],
+    "seats": 5,
+    "transmission": "Automatic"
+  },
+  {
+    "id": 2,
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2021,
+    "pricePerDay": 55,
+    "images": ["https://via.placeholder.com/300x150"],
+    "seats": 5,
+    "transmission": "Manual"
+  }
+]

@@ -4,25 +4,23 @@
  *
  * @format
  */
+import { Provider } from 'react-redux';
+import Toast from 'react-native-toast-message';
 
+import store from './src/store';
+import OnBoarding from './src/screens/OnBoarding';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
-
-import Tabs from './src/screens/Tabs';
 
 function App() {
 
   return (
-    <SafeAreaView style={styleSheet.containerStyles} >
-      <Tabs />
-    </SafeAreaView>
+    <Provider store={store} >
+      <SafeAreaView>
+        <OnBoarding />
+      </SafeAreaView>
+      <Toast />
+    </Provider>
   );
 }
-
-const styleSheet = StyleSheet.create({
-  containerStyles:{
-    height: '100%'
-  }
-});
 
 export default App;

@@ -1,10 +1,24 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 
-const Home = () => {
+import { useAppSelector, useAppDispatch } from '../store';
+import { getAllCars } from '../store/thunks/carThunks';
+
+const Home: React.FC<PropsWithChildren> = () => {
+
+    const dispatch = useAppDispatch();
+
+    const { cars } = useAppSelector((state) => state.cars);
+
+    console.log(cars);
+
+    useEffect(() => {
+        dispatch(getAllCars());
+    }, [dispatch]);
+
   return (
     <View>
-      <Text>Home</Text>
+      <Text>This a Car rental app</Text>
     </View>
   );
 }
