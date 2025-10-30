@@ -21,4 +21,5 @@ export type car = {
 export type RootStackParamList = {
   Tabs: undefined;
   CarDetails: { id: string };
+  BookingForm: undefined
 };

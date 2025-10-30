@@ -275,6 +275,7 @@ const CarDetails: React.FC = () => {
                             <CustomButton 
                                 title='Book Now' 
                                 isLoading={false} 
+                                handlePress={() => navigation.navigate("BookingForm")} 
                                 containerStyles={{width: '90%', margin: 'auto', marginTop: 40, marginBottom: 40}}
                             />
                         </View>
