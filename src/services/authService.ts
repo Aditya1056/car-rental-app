@@ -21,7 +21,7 @@ mock.onPost('/login').reply(async (config) => {
 
         const userData = {
             ...data,
-            expiryAt: Date.now() + (10 * 60 * 1000),
+            expiryAt: Date.now() + (30 * 60 * 1000),
         }
 
         await AsyncStorage.setItem('user', JSON.stringify(userData));
@@ -47,7 +47,7 @@ mock.onPost('/signup').reply(async (config) => {
             id: Date.now().toString(),
             name,
             email,
-            expiryAt: Date.now() + (10 * 60 * 1000),
+            expiryAt: Date.now() + (30 * 60 * 1000),
         }
 
         await AsyncStorage.setItem('user', JSON.stringify(userData));

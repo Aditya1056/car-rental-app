@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getAllCars, getCarsById } from "../thunks/carThunks";
+import { getAllCars, getCarById } from "../thunks/carThunks";
 
 type initialStateType = {
     loading: boolean,
@@ -40,17 +40,14 @@ const carSlice = createSlice({
             });
 
         builder
-            .addCase(getCarsById.pending, (state) => {
-                state.loading = true;
+            .addCase(getCarById.pending, (state) => {
                 state.car = null;
                 state.singleCarError = null;
             })
-            .addCase(getCarsById.fulfilled, (state, action) => {
-                state.loading = false;
+            .addCase(getCarById.fulfilled, (state, action) => {
                 state.car = action.payload;
             })
-            .addCase(getCarsById.rejected, (state, action) => {
-                state.loading = false;
+            .addCase(getCarById.rejected, (state, action) => {
                 state.singleCarError = action.payload;
             });
     }

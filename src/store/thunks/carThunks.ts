@@ -15,13 +15,14 @@ export const getAllCars = createAsyncThunk('cars/getAllCars',
     }
 );
 
-export const getCarsById = createAsyncThunk('cars/getCarById', 
+export const getCarById = createAsyncThunk('cars/getCarById', 
     async (carId: string, thunkAPI) => {
+
 
         try{
 
             const response = await carInstance.get(`/car/${carId}`);
-
+            
             return response.data.data;
         }
         catch(err: any){

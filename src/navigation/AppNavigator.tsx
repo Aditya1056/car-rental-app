@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import AuthStack from './AuthStack';
-import Tabs from './Tabs';
+import MainStack from './MainStack';
 
 import { useAppSelector, useAppDispatch } from '../store';
 
@@ -20,7 +20,7 @@ const AppNavigator = () => {
 
     return (
         <NavigationContainer>
-            {loggedIn ? <Tabs /> : <AuthStack />}
+            {loggedIn ? <MainStack /> : <AuthStack />}
         </NavigationContainer>
     );
 };

@@ -1,5 +1,7 @@
 import React, { PropsWithChildren, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import Toast from 'react-native-toast-message';
+
+import CarsListing from '../components/CarsListing';
 
 import { useAppSelector, useAppDispatch } from '../store';
 
@@ -11,7 +13,6 @@ const Home: React.FC<PropsWithChildren> = () => {
     const dispatch = useAppDispatch();
 
     const { loggedIn, user, } = useAppSelector((state) => state.auth);
-    // const { cars } = useAppSelector((state) => state.cars);
 
     useEffect(() => {
         dispatch(getAllCars());
@@ -19,40 +20,57 @@ const Home: React.FC<PropsWithChildren> = () => {
 
     useEffect(() => {
 
-        let timer = null;
+        let timer: (number | null) = null;
 
-        console.log(user);
+        const logoutHandler = async () => {
 
+            if(timer){
+                clearTimeout(timer);
+                timer = null;
+            }
+
+            try{
+                await dispatch(logout());
+                Toast.show({
+                    type: 'info',
+                    text1: 'Logged Out!',
+                });
+            }
+            catch(err: any){
+                Toast.show({
+                    type: 'error',
+                    text1: 'Error',
+                    text2: err || 'Something went wrong'
+                });
+            }
+        }
+        
         if(loggedIn && user && user.expiryAt){
 
             if(Number(user.expiryAt) < Date.now()){
-                if(timer){
-                    clearTimeout(timer);
-                }
-                dispatch(logout());
-                return;
+                logoutHandler();
             }
-
-            const diff = Number(user.expiryAt) - Date.now();
-
-            timer = setTimeout(() => {
-                dispatch(logout());
-            }, diff);
+            else{
+                const diff = Number(user.expiryAt) - Date.now();
+    
+                timer = setTimeout(() => {
+                    dispatch(logout());
+                }, diff);
+            }
         }
 
         return () => {
             if(timer){
                 clearTimeout(timer);
+                timer = null;
             }
         }
 
     }, [loggedIn, user, dispatch]);
 
-  return (
-    <View>
-      <Text>This a Car rental app</Text>
-    </View>
-  );
+    return (
+        <CarsListing />
+    );
 }
 
 export default Home;
