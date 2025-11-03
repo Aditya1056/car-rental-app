@@ -1,4 +1,12 @@
 [
   { "id": 1, "name": "Downtown Station", "lat": 40.712776, "lng": -74.005974 },
-  { "id": 2, "name": "Airport Station", "lat": 40.641311, "lng": -73.778139 }
+  { "id": 2, "name": "Airport Station", "lat": 40.641311, "lng": -73.778139 },
+  { "id": 3, "name": "Howard Beach Station", "lat": 40.660475, "lng": -73.830859 },
+  { "id": 4, "name": "Aqueduct Racetrack", "lat": 40.676951, "lng": -73.835701 },
+  { "id": 5, "name": "Rockaway Beach", "lat": 40.583700, "lng": -73.821300 },
+  { "id": 6, "name": "Jamaica Station", "lat": 40.700292, "lng": -73.808708 },
+  { "id": 7, "name": "South Ozone Park", "lat": 40.676100, "lng": -73.812800 },
+  { "id": 8, "name": "Baisley Pond Park", "lat": 40.679816, "lng": -73.792056 },
+  { "id": 9, "name": "Far Rockaway Station", "lat": 40.603182, "lng": -73.755476 },
+  { "id": 10, "name": "Brookville Park", "lat": 40.666547, "lng": -73.738563 }
 ]

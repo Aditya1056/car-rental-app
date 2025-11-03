@@ -1,5 +1,21 @@
 [
   {
+    "id": 3,
+    "make": "Tata Motors",
+    "model": "Nexon",
+    "description": "The Tata Nexon is a spacious and comfortable compact SUV that looks good, is equipped with several modern features such as a panoramic sunroof and JBL sound system, and boasts a five-star BNCAP safety rating and six airbags as standard.",
+    "year": 2023,
+    "topSpeed": 100,
+    "pricePerDay": 45,
+    "images": [
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1762151344/nexon-1_ajjxj5.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1762151346/nexon-2_gqd8pp.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1762151352/nexon-3_ne02qk.png"
+    ],
+    "seats": 5,
+    "transmission": "Manual"
+  },
+  {
     "id": 1,
     "make": "Toyota",
     "model": "Corolla",
@@ -36,39 +52,19 @@
     "transmission": "Manual"
   },
   {
-    "id": 3,
-    "make": "Toyota",
-    "model": "Corolla",
-    "description": "The Toyota Corolla is a line of compact cars manufactured by Toyota, available in various body styles like sedan, hatchback, and SUV (Corolla Cross).",
-    "year": 2022,
-    "topSpeed": 111,
-    "pricePerDay": 50,
+    "id": 4,
+    "make": "Mahindra",
+    "model": "Thar Roxx",
+    "description": "The Mahindra Thar Roxx SUV offers great space, features, and value. Its more comfortable and family-oriented package than the standard three-door version.",
+    "year": 2024,
+    "topSpeed": 100,
+    "pricePerDay": 65,
     "images": [
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761544940/corolla-1_ko6bxq.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545070/corolla-2_xscna3.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545086/corolla-3_ojizfy.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761628037/corolla-4_dlehq8.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761628050/corolla-5_dk7ri3.png"
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1762154787/thar-1_djh5b2.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1762154598/thar-2_p9jgjo.png",
+      "https://res.cloudinary.com/dhbdon75r/image/upload/v1762154605/thar-3_zqgaup.png"
     ],
     "seats": 5,
     "transmission": "Automatic"
-  },
-  {
-    "id": 4,
-    "make": "Ferrari",
-    "model": "Ferrari Four (FF)",
-    "description": "The Ferrari FF is a four-seater with four-wheel drive, a mid-front engine, and a unique Pininfarina design, designed for tough driving challenges.",
-    "year": 2025,
-    "topSpeed": 208,
-    "pricePerDay": 85,
-    "images": [
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545125/ff-2_ojrqqy.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545119/ff-1_w2mkxa.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761545131/ff-3_kmzkwj.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761628101/ff-4_f6ysii.png",
-      "https://res.cloudinary.com/dhbdon75r/image/upload/v1761628153/ff-5_r4bgho.png"
-    ],
-    "seats": 4,
-    "transmission": "Manual"
   }
 ]
