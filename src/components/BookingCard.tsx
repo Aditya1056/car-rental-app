@@ -138,7 +138,7 @@ const getStyles = (theme: ColorSchemeName) => {
         },
         imageStyles: {
             width: 300,
-            height: 120,
+            height: 150,
         },
         titleStyles: {
             color: theme === 'dark' ? 'white' : 'black',
