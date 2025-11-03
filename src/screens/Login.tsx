@@ -132,7 +132,7 @@ const getStyles = (theme: ColorSchemeName) => {
         },
         keyboardViewStyles: {
             justifyContent: 'center',
-            minHeight: '100%',
+            flex:1,
             width: '100%',
             paddingHorizontal: 25,
             marginVertical: 10,

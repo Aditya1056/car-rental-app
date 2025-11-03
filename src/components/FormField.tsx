@@ -70,7 +70,18 @@ const FormField : React.FC<Props> = ({
         </View>
         {
             meta.touched && meta.error && 
-            <Text style={[styles.errorStyles]}>{meta.error}</Text>
+
+            <Text style={[styles.errorStyles]}>
+                <FontAwesome6 
+                    name='circle-exclamation' 
+                    size={13} 
+                    color='#b04e4eff' 
+                    iconStyle='solid'
+                    style={{
+                        marginRight:4
+                    }}
+                />  {meta.error}
+            </Text>
         }
     </View>
   );
@@ -106,7 +117,7 @@ const getStyles = (theme: ColorSchemeName, isFocused: boolean) => {
             width:'90%',
             margin: 'auto',
             textAlign:'center',
-            color: '#e05555'
+            color: '#b04e4eff',
         }
     });
 

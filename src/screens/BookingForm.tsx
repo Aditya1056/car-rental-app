@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { Formik } from 'formik';
 import { Image, Text, useColorScheme, View, ColorSchemeName, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Toast from 'react-native-toast-message';
 import * as Yup from 'yup';
 import DatePicker from 'react-native-date-picker';
 import {FontAwesome6} from '@react-native-vector-icons/fontawesome6';
@@ -12,6 +11,7 @@ import CustomButton from '../components/CustomButton';
 import MapModal from '../components/MapModal';
 
 import { useAppSelector } from '../store';
+import PaymentModal from '../components/PaymentModal';
 
 const getNumberOfDays = (start: Date, end: Date) => {
   const diff = Math.max(end.getTime() - start.getTime(), 0);
@@ -28,7 +28,8 @@ const calculateFare = (days: number, values: any, price: number) => {
 
 const BookingForm: React.FC = () => {
 
-    const [isMapVisible, setMapVisible] = useState(false);
+    const [isMapVisible, setMapVisible] = useState<boolean>(false);
+    const [paymentModalVisible, setPaymentModalVisible] = useState<boolean>(false);
     const [locationType, setLocationType] = useState<'pickup' | 'dropOff' | null>(null);
 
     const navigation = useNavigation<any>();
@@ -50,20 +51,6 @@ const BookingForm: React.FC = () => {
         dropOffLocation: Yup.object().required('Drop off location required'),
     });
 
-    const submitHandler = async (values: any) => {
-
-        try{ 
-            console.log(values);
-        }
-        catch(err: any){
-            Toast.show({
-                type: 'error',
-                text1: 'Error',
-                text2: err || "Something went wrong",
-            });
-        }
-    }
-
     const setLocationHandler = (selectedLocation: any) => {
         if(formikRef && locationType && selectedLocation){
             formikRef.current.setFieldValue(`${locationType}Location`, selectedLocation);
@@ -75,16 +62,16 @@ const BookingForm: React.FC = () => {
 
             <ScrollView style={[styles.ScrollViewStyles]} >
 
-            <View style={styles.backViewStyles} >
-                <TouchableOpacity onPress={() => navigation.goBack()} >
-                    <FontAwesome6 
-                        name='arrow-left' 
-                        size={26} 
-                        color='rgba(145, 145, 145, 1)'
-                        iconStyle='solid'
-                    />
-                </TouchableOpacity>
-            </View>
+                <View style={styles.backViewStyles} >
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <FontAwesome6 
+                            name='arrow-left' 
+                            size={26} 
+                            color='rgba(145, 145, 145, 1)'
+                            iconStyle='solid'
+                        />
+                    </TouchableOpacity>
+                </View>
 
                 <Text 
                     style={{
@@ -172,7 +159,7 @@ const BookingForm: React.FC = () => {
                         dropOffLocation: undefined,
                     }}
                     validationSchema={BookingSchema}
-                    onSubmit={submitHandler} 
+                    onSubmit={() => setPaymentModalVisible(true)}  
                     innerRef={formikRef} 
                 >
                     {({values, setFieldValue, errors, touched, handleSubmit}) => (
@@ -200,7 +187,16 @@ const BookingForm: React.FC = () => {
                                 </View>
                                 {
                                     touched.startDate && errors.startDate && 
-                                    <Text>{String(errors.startDate)}</Text>
+                                    <Text
+                                        style={{
+                                            color: 'rgba(191, 75, 75, 1)',
+                                            textAlign: 'center',
+                                            marginTop:5,
+                                            paddingHorizontal: 10,
+                                        }} 
+                                    >
+                                        {String(errors.startDate)}
+                                    </Text>
                                 }
                             </View>
 
@@ -223,12 +219,20 @@ const BookingForm: React.FC = () => {
                                         style={{
                                             margin:'auto',
                                         }}
-                                        
                                     />
                                 </View>
                                 {
                                     touched.endDate && errors.endDate && 
-                                    <Text>{String(errors.endDate)}</Text>
+                                    <Text 
+                                        style={{
+                                            color: 'rgba(191, 75, 75, 1)',
+                                            textAlign: 'center',
+                                            marginTop:5,
+                                            paddingHorizontal: 10,
+                                        }} 
+                                    >
+                                        {String(errors.endDate)}
+                                    </Text>
                                 }
                             </View>
 
@@ -347,7 +351,8 @@ const BookingForm: React.FC = () => {
                                         values.startDate
                                     )} 
                                     handlePress={handleSubmit} 
-                                    containerStyles={{width:'50%', borderRadius:50}}
+                                    containerStyles={{width:'50%', borderRadius:50}} 
+                                    
                                 />
                             </View>
                         </>
@@ -363,6 +368,27 @@ const BookingForm: React.FC = () => {
                         setMapVisible(false);
                     }}
                 />
+
+                {
+                    formikRef.current && 
+                    <PaymentModal 
+                        key={"paymentModal"} 
+                        isVisible={paymentModalVisible} 
+                        onClose={() => setPaymentModalVisible(false)} 
+                        booking={{
+                            ...formikRef.current.values,
+                            cost: calculateFare(
+                                getNumberOfDays(
+                                    formikRef.current.values.startDate, 
+                                    formikRef.current.values.endDate
+                                ), 
+                                formikRef.current.values, 
+                                Number(car.pricePerDay)
+                            )
+                        }} 
+                    />
+                }
+
             </ScrollView>
         </SafeAreaView>
     );
