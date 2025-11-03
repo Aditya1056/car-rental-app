@@ -86,13 +86,13 @@ const getStyles = (theme: ColorSchemeName) => {
             backgroundColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0,0,0,0.08)',
             alignItems: 'center',
             justifyContent: 'center',
-            rowGap: 15,
+            rowGap: 8,
             paddingTop: 2,
             paddingBottom: 20
         },
         imageStyles: {
             width: 360,
-            height: 140,
+            height: 180,
         },
         titleStyles: {
             color: theme === 'dark' ? 'white' : 'black',
@@ -114,6 +114,7 @@ const getStyles = (theme: ColorSchemeName) => {
             paddingVertical: 4,
             borderRadius: 5,
             columnGap: 10,
+            marginTop:2
         },
         specTextStyles:{
             color: theme === 'dark' ? 'white' : 'black',
