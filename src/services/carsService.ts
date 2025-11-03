@@ -18,11 +18,11 @@ mock.onGet('/cars').reply(async () => {
 });
 
 
-mock.onGet('/car').reply(async (config) => {
+mock.onGet(/\/car\/(\d+)/).reply(async (config) => {
 
     try{
 
-        const match = config.url?.match(/\/car\/([^/]+)$/);
+        const match = config.url?.match(/\/car\/(\d+)/);
 
         const id = match ? match[1] : null;
 
