@@ -76,7 +76,7 @@ const BookingCard: React.FC<Props> = ({ booking, index, upComingLast, divider } 
                         borderRadius:6,
                         boxShadow:'0 0 1px 0.1px rgba(125, 133, 167, 1)',
                     }} 
-                    textStyles={{fontSize: 14}}
+                    textStyles={{fontSize: 14}} 
                     isLoading={false} 
                     handlePress={openPaymentDetailsHandler} 
                 />
