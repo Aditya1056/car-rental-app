@@ -6,6 +6,7 @@ module.exports = {
       "path": ".env", // Optional: Path to your .env file
       "safe": false, // Optional: Load .env.example if .env is missing
       "allowUndefined": true // Optional: Allow undefined variables
-    }]
+    }],
+    '@babel/plugin-transform-export-namespace-from'
   ]
 };

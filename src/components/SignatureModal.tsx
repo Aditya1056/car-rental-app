@@ -3,6 +3,7 @@ import Modal from 'react-native-modal';
 import SignatureView from "react-native-signature-canvas";
 import { Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 import CustomButton from "./CustomButton";
 
@@ -154,6 +155,7 @@ const SignatureModal: React.FC<Props> = ({ visible, onConfirm, onCancel }) => {
                     />
                 </View>
             </SafeAreaView>
+            <Toast />
         </Modal>
     );
 }

@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Formik } from 'formik';
 import { Image, Text, useColorScheme, View, ColorSchemeName, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import DatePicker from 'react-native-date-picker';
 import {FontAwesome6} from '@react-native-vector-icons/fontawesome6';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import CustomButton from '../components/CustomButton';
 import MapModal from '../components/MapModal';
@@ -33,6 +33,9 @@ const BookingForm: React.FC = () => {
     const [locationType, setLocationType] = useState<'pickup' | 'dropOff' | null>(null);
 
     const navigation = useNavigation<any>();
+    const route = useRoute();
+
+    const params = route.params as any;
 
     const formikRef = useRef<any>(null);
 
@@ -41,8 +44,6 @@ const BookingForm: React.FC = () => {
     const styles = getStyles(theme);
 
     const { car } = useAppSelector(state => state.cars);
-
-    // const dispatch = useAppDispatch();
 
     const BookingSchema = Yup.object().shape({
         startDate: Yup.date().required('Start date required'),
@@ -56,6 +57,12 @@ const BookingForm: React.FC = () => {
             formikRef.current.setFieldValue(`${locationType}Location`, selectedLocation);
         }
     }
+
+    useEffect(() => {
+        if(params && params.startDate && params.endDate && params.pickupLocation && params.dropOffLocation){
+            setPaymentModalVisible(true);
+        }
+    }, [params]);
 
     return (
         <SafeAreaView style={[styles.safeAreaStyles]} >
@@ -90,7 +97,7 @@ const BookingForm: React.FC = () => {
 
                 <View style={styles.carDetailsStyles} >
                     <Image 
-                        source={{uri: car.images[0]}}  
+                        source={{uri: car.images[0]}} 
                         resizeMode='cover' 
                         style={[styles.carImageStyles]} 
                     />
@@ -145,21 +152,21 @@ const BookingForm: React.FC = () => {
                                 }}
                                 numberOfLines={1}
                             >
-                                {car.topSpeed}mph, {car.transmission}
-                            </Text> 
+                                {car.topSpeed}mph, {car.transmission} 
+                            </Text>
                         </View>
                     </View>
                 </View>
 
                 <Formik
                     initialValues={{ 
-                        startDate: new Date(), 
-                        endDate: new Date(),
-                        pickupLocation: undefined,
-                        dropOffLocation: undefined,
+                        startDate: (params && params.startDate) ? new Date(params.startDate) : new Date(),
+                        endDate: (params && params.endDate) ? new Date(params.endDate) : new Date(),
+                        pickupLocation: (params && params.pickupLocation) ? params.pickupLocation : undefined,
+                        dropOffLocation: (params && params.dropOffLocation) ? params.dropOffLocation : undefined,
                     }}
                     validationSchema={BookingSchema}
-                    onSubmit={() => setPaymentModalVisible(true)}  
+                    onSubmit={() => setPaymentModalVisible(true)} 
                     innerRef={formikRef} 
                 >
                     {({values, setFieldValue, errors, touched, handleSubmit}) => (
@@ -363,6 +370,11 @@ const BookingForm: React.FC = () => {
                     key={"modal"} 
                     visible={isMapVisible} 
                     onSelectLocation={setLocationHandler} 
+                    selectedLocation={
+                        (formikRef && formikRef.current && locationType) ? 
+                        locationType === 'pickup' ? formikRef.current.values.pickupLocation : formikRef.current.values.dropOffLocation :
+                        undefined
+                    }
                     onClose={() => {
                         setLocationType(null);
                         setMapVisible(false);

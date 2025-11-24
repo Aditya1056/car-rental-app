@@ -18,11 +18,13 @@ import CustomButton from '../components/CustomButton';
 
 import { getCarById } from '../store/thunks/carThunks';
 import { ScrollView } from 'react-native-gesture-handler';
+import SpeechModal from '../components/SpeechModal';
 
 const CarDetails: React.FC = () => {
 
     const [loading, setLoading] = useState(true);
     const [exporting, setExporting] = useState(false);
+    const [speechModal, setSpeechModal] = useState(false);
 
     const { car } = useAppSelector(state => state.cars);
 
@@ -34,6 +36,14 @@ const CarDetails: React.FC = () => {
     const styles = getStyles(theme);
 
     const { id } = route.params as {id: string};
+
+    const openSpeechModal = () => {
+        setSpeechModal(true);
+    }
+
+    const closeSpeechModal = () => {
+        setSpeechModal(false);
+    }
 
     const handleExport = async () => {
         try {
@@ -273,12 +283,28 @@ const CarDetails: React.FC = () => {
                                 </View>
                             </View>
                             <CustomButton 
+                                title='Book by Voice' 
+                                isLoading={false} 
+                                handlePress={openSpeechModal} 
+                                containerStyles={{
+                                    width: '90%', 
+                                    margin: 'auto', 
+                                    marginTop: 40, 
+                                    backgroundColor: 'rgba(52, 87, 182, 1)'
+                                }}
+                            />
+                            <CustomButton 
                                 title='Book Now' 
                                 isLoading={false} 
                                 handlePress={() => navigation.navigate("BookingForm")} 
-                                containerStyles={{width: '90%', margin: 'auto', marginTop: 40, marginBottom: 40}}
+                                containerStyles={{width: '90%', margin: 'auto', marginTop: 15, marginBottom: 40}}
                             />
                         </View>
+
+                        <SpeechModal 
+                            visible={speechModal} 
+                            onCancel={closeSpeechModal} 
+                        />
                     </>
                 }
             </ScrollView>

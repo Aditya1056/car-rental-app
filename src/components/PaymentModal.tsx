@@ -221,11 +221,11 @@ const PaymentModal: React.FC<Props> = ({ isVisible, onClose, booking }) => {
                                             style={{
                                                 color: theme === 'dark' ? 'white' : 'black',
                                                 opacity: 0.6,
-                                                fontSize:14,
+                                                fontSize:13,
                                             }}
                                             numberOfLines={1}
                                         >
-                                            <Text style={{fontWeight:'800'}} >Pick up &#8594;</Text> {start}
+                                            {start} &#8594; {end}
                                         </Text> 
                                     </View>
                                     <View
@@ -237,7 +237,7 @@ const PaymentModal: React.FC<Props> = ({ isVisible, onClose, booking }) => {
                                         }}
                                         >
                                         <FontAwesome6 
-                                            name='calendar-day' 
+                                            name='location-dot'
                                             size={12} 
                                             color='rgba(219, 76, 76, 1)'
                                             iconStyle='solid' 
@@ -246,11 +246,11 @@ const PaymentModal: React.FC<Props> = ({ isVisible, onClose, booking }) => {
                                             style={{
                                                 color: theme === 'dark' ? 'white' : 'black',
                                                 opacity: 0.6,
-                                                fontSize:14,
+                                                fontSize:13,
                                             }}
                                             numberOfLines={1}
                                         >
-                                            <Text style={{fontWeight:'800'}} >Drop off &#8594;</Text> {end}
+                                            {booking?.pickupLocation?.name} &#8594; {booking?.dropOffLocation?.name}
                                         </Text> 
                                     </View>
                                 </View>
@@ -379,6 +379,7 @@ const PaymentModal: React.FC<Props> = ({ isVisible, onClose, booking }) => {
                         </KeyboardAvoidingView>
                     </ScrollView>
             </SafeAreaView>
+            <Toast />
         </Modal>
     );
 }
