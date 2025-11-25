@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import * as Yup from 'yup';
 import Modal from 'react-native-modal';
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { useNavigation } from '@react-navigation/native';
 
 import CustomButton from '../components/CustomButton';

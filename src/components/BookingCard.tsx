@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { View, Text, Image, StyleSheet, ColorSchemeName, useColorScheme } from 'react-native';
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 import CustomButton from './CustomButton';
 import PaymentDetailsModal from './PaymentDetailsModal';

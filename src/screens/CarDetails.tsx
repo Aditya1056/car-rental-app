@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, useColorScheme, ColorSchemeName, TouchableOpacity, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../util/types';
 import { useAppDispatch, useAppSelector } from '../store';
 import Toast from 'react-native-toast-message';
-import { Ionicons } from '@react-native-vector-icons/ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {generatePDF} from 'react-native-html-to-pdf';
 import Share from 'react-native-share';
 

@@ -4,7 +4,7 @@ import { Image, Text, useColorScheme, View, ColorSchemeName, StyleSheet, Touchab
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import DatePicker from 'react-native-date-picker';
-import {FontAwesome6} from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import CustomButton from '../components/CustomButton';

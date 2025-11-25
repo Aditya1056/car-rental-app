@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-native-modal";
 import { Text, View, Image, useColorScheme, ColorSchemeName, StyleSheet } from "react-native";
-import { FontAwesome6 } from "@react-native-vector-icons/fontawesome6";
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Toast from "react-native-toast-message";
 
 type Props = {

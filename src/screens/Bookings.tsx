@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useIsFocused } from '@react-navigation/native';
 import { Text, StyleSheet, useColorScheme, ColorSchemeName, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
@@ -10,6 +11,8 @@ import Loader from '../components/Loader';
 import { useAppSelector, useAppDispatch } from '../store';
 
 import { getAllBookings } from '../store/thunks/bookingThunks';
+
+import setSecure from '../util/secureScreen';
 
 function parseDate(str: any) {
 
@@ -64,6 +67,8 @@ const Bookings: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
+  const isFocused = useIsFocused();
+
   const today = new Date();
 
   const upcomingBookings = bookings.filter((booking: any) => {
@@ -113,6 +118,15 @@ const Bookings: React.FC = () => {
     fetchBookings();
 
   }, [dispatch, user]);
+
+  useEffect(() => {
+
+    setSecure(isFocused);
+
+    return () => {
+      setSecure(isFocused);
+    }
+  }, [isFocused]);
 
   return (
     <SafeAreaView style={styles.safeAreaStyles} >

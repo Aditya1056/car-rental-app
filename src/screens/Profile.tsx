@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, useColorScheme, ColorSchemeName, Image, Touchab
 import React from 'react';
 import Toast from 'react-native-toast-message';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import CustomButton from '../components/CustomButton';

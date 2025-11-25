@@ -2,7 +2,7 @@ import React from "react";
 import { useColorScheme } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 import Home from '../screens/Home';
 import Bookings from '../screens/Bookings';

@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Platform, PermissionsAndroid } from 'reac
 import AudioRecord from 'react-native-audio-record';
 import Toast from 'react-native-toast-message';
 import Modal from 'react-native-modal';
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import CustomButton from './CustomButton';
 import Loader from './Loader';
 import FastImage from 'react-native-fast-image';

@@ -1,6 +1,5 @@
 import { ColorSchemeName, Image, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import { useNavigation } from '@react-navigation/native';
 import { useAppSelector } from '../store';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';

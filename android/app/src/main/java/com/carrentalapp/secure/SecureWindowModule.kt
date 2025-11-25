@@ -13,7 +13,8 @@ class SecureWindowModule(private val reactContext: ReactApplicationContext)
 
     @ReactMethod
     fun setSecure(enable: Boolean) {
-        val activity: Activity? = currentActivity
+        // reactContext.currentActivity is nullable, handle safely
+        val activity: Activity? = reactContext.currentActivity
         activity?.runOnUiThread {
             if (enable) {
                 activity.window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)

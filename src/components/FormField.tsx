@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, useColorScheme, View, StyleSheet, ColorSchemeName } from 'react-native';
 import { useField } from 'formik';
-import { FontAwesome6 } from '@react-native-vector-icons/fontawesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 type Props = {
     name: string,

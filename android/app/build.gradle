@@ -2,6 +2,14 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+/*
+Source - https://stackoverflow.com/a
+Posted by Luis Fer Garcia, modified by community. See post 'Timeline' for change history
+Retrieved 2025-11-24, License - CC BY-SA 4.0
+*/
+
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
